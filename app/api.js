@@ -2,6 +2,20 @@ import axios from 'axios';
 
 import * as c from './constants';
 import data from './ecoach.json'
+import db from '@react-native-firebase/database';
+
+import fb  from "firebase";
+
+var firebaseConfig = {
+    apiKey: "AIzaSyDfS_JJH3nFlZZtOp8TrXSRX3AljJz11bc",
+    authDomain: "ecoach-2dd8b.firebaseapp.com",
+    databaseURL: "https://ecoach-2dd8b.firebaseio.com",
+    projectId: "ecoach-2dd8b",
+    storageBucket: "ecoach-2dd8b.appspot.com",
+    messagingSenderId: "1022388543863",
+    appId: "1:1022388543863:web:8e361902dc0b038a188172",
+    measurementId: "G-5PFVCLC42K"
+  };
 
 export async function getHeadlines(country = "us"){
     try{
@@ -17,7 +31,26 @@ export async function getHeadlines(country = "us"){
 
         //     response[idx] = {articles, totalResults};
         // });
-        let {articles, totalResults} = data;
+        var response;
+        var app;
+        if (!fb.apps.length) {
+             app =  fb.initializeApp(firebaseConfig);
+        }
+        const db = app.database();
+        await db.ref('/')
+        .once('value')
+        .then(snapshot => {
+          console.log('User data: ', snapshot.val());
+          let items = snapshot.val()
+          response = {...items}
+        });
+        // db.ref('/').on('value', querySnapShot => {
+        //     let data = querySnapShot.val() ? querySnapShot.val() : {};
+
+        //     // let {articles, totalResults} = data;
+        //     // response = {articles, totalResults}
+        //   });
+        let {articles, totalResults} = {...response};
 
        // response[0] = {articles, totalResults};
         let [technology] = [{articles, totalResults}];

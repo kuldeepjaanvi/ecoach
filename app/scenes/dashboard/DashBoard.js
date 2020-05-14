@@ -1,6 +1,6 @@
 
 import React, {useEffect, useState} from 'react';
-import {ActivityIndicator, ScrollView, View, Text} from 'react-native';
+import {ActivityIndicator, SafeAreaView,ScrollView, View, Text, StyleSheet,Linking,Alert} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux'
 
 import * as api from "../../api";
@@ -9,6 +9,7 @@ import Article from "../../utils";
 
 import Panel from '../../components/Panel'
 import PanelItem from '../../components/PanelItem'
+import { FloatingAction } from "react-native-floating-action";
 
 export default function DashBoard(props) {
     const dispatch = useDispatch();
@@ -83,7 +84,35 @@ export default function DashBoard(props) {
 
     let renderSportItem = renderItem('large');
     let renderTechItem = renderItem('large', false, true);
+    const actions = [
+        // {
+        //   text: "Accessibility",
+        //   icon: require('./ic_accessibility_white.png'),
+        //   name: "bt_accessibility",
+        //   position: 2
+        // },
+        // {
+        //   text: "Language",
+        //   icon: require("./ic_language_white.png"),
+        //   name: "bt_language",
+        //   position: 1
+        // },
+        {
+          text: "Coach SignUp",
+          icon: require("./ic_room_white.png"),
+          name: "bt_SignUp",
+          position: 3
+        },
+        {
+          text: "WhatsApp",
+          icon: require("./ic_videocam_white.png"),
+          name: "bt_WhatsApp",
+          position: 4
+        }
+      ];
     return (
+        <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
         <ScrollView style={{backgroundColor: "#fff"}}>
             {/* <Panel title={"Business"}
                    data={business.articles.slice(0, 10)}
@@ -125,10 +154,55 @@ export default function DashBoard(props) {
                    showDivider={false}
                    onCTAPress={() => onCTAPress("Technology")}/>
         </ScrollView>
+          {/* <Property
+            propertyName="position"
+            propertyValue="center"
+            defaultValue="right"
+          /> */}
+          <FloatingAction
+            position="right"
+            actions={actions}
+            onPressItem={name => {
+                if(name == "bt_WhatsApp") {
+                    sendOnWhatsApp()
+                } else if (name == "bt_SignUp"){
+        title: `${navigation.getParam('title')}`,
+                    navigate("Article", {title: "Welcome to ECoach", article: {"article":{url:"https://forms.gle/whZ6t7cJ1rh3h3xQA"},"title":"SignUp"}});
+                    Alert.alert({"article":{url:"https://forms.gle/whZ6t7cJ1rh3h3xQA"}});
+
+                }
+              //Alert.alert("Icon pressed", `the icon ${name} was pressed`);
+            }}
+          />
+          
+        </View>
+      </SafeAreaView>
     );
+    
 };
 
-
+sendOnWhatsApp=() => {
+    let msg = "";
+    let mobile = 9886787008;
+    if(mobile){
+        let url = 'whatsapp://send?text=' + msg + '&phone=91' + mobile;
+        Linking.openURL(url).then((data) => {
+          console.log('WhatsApp Opened');
+        }).catch(() => {
+          alert('Make sure Whatsapp installed on your device');
+        });
+      
+    }else{
+      alert('Please insert mobile no');
+    }
+  }
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: "#fff"
+    }
+  });
+  
 DashBoard.navigationOptions = ({navigation}) => {
     return {title: `My Coach`}
 };

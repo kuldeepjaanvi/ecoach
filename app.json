@@ -23,7 +23,14 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
-    }
+      "supportsTablet": true,
+      "bundleIdentifier": "com.enablingpeople.ecoach",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.enablingpeople.ecoach",
+      "versionCode": 1
+    },
+    "entryPoint": "node_modules/expo/AppEntry.js"
   }
 }
