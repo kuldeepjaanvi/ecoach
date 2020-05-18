@@ -1,27 +1,31 @@
 {
   "expo": {
-    "name": "myNewProject",
-    "slug": "myNewProject",
+    "name": "Focus Class",
+    "slug": "FocusClass",
     "platforms": [
       "ios",
       "android",
       "web"
     ],
-    "version": "1.0.0",
+    "version": "1.1.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
-    "splash": {
-      "image": "./assets/images/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
+    //"icon": "./assets/images/icon.png",
+    "scheme": "root",
+    // "splash": {
+    //   "image": "./assets/images/splash.png",
+    //   "resizeMode": "contain",
+    //   "backgroundColor": "#ffffff"
+    // },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
       "**/*"
     ],
+    "androidStatusBar": {
+      "backgroundColor": "#334a32",
+      "barStyle":"dark-content"
+    },
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.enablingpeople.ecoach",

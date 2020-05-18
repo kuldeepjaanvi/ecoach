@@ -32,11 +32,10 @@ export async function getHeadlines(country = "us"){
         //     response[idx] = {articles, totalResults};
         // });
         var response;
-        var app;
         if (!fb.apps.length) {
-             app =  fb.initializeApp(firebaseConfig);
+            fb.initializeApp(firebaseConfig);
         }
-        const db = app.database();
+        const db = fb.database();
         await db.ref('/')
         .once('value')
         .then(snapshot => {

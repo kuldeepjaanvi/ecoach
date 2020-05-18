@@ -98,14 +98,14 @@ export default function DashBoard(props) {
         //   position: 1
         // },
         {
-          text: "Coach SignUp",
-          icon: require("./ic_room_white.png"),
+          text: "Submit Answers",
+          icon: require("./submitAnswer.png"),
           name: "bt_SignUp",
           position: 3
         },
         {
           text: "WhatsApp",
-          icon: require("./ic_videocam_white.png"),
+          icon: require("./whatsup.png"),
           name: "bt_WhatsApp",
           position: 4
         }
@@ -146,13 +146,14 @@ export default function DashBoard(props) {
                    data={sports.articles.slice(0, 10)}
                    renderItem={renderSportItem}
                    onCTAPress={() => onCTAPress("Sports")}/> */}
-
+            <View>
             <Panel cols={1}
                    title={"Stay Home and Keep Learning with us"}
                    data={technology.articles.slice(0, 6)}
                    renderItem={renderTechItem}
                    showDivider={false}
                    onCTAPress={() => onCTAPress("Technology")}/>
+              </View>
         </ScrollView>
           {/* <Property
             propertyName="position"
@@ -166,9 +167,9 @@ export default function DashBoard(props) {
                 if(name == "bt_WhatsApp") {
                     sendOnWhatsApp()
                 } else if (name == "bt_SignUp"){
-        title: `${navigation.getParam('title')}`,
-                    navigate("Article", {title: "Welcome to ECoach", article: {"article":{url:"https://forms.gle/whZ6t7cJ1rh3h3xQA"},"title":"SignUp"}});
-                    Alert.alert({"article":{url:"https://forms.gle/whZ6t7cJ1rh3h3xQA"}});
+                  //navigate('SecondScreen', { user: 'Lucy' })
+                  navigate("Article", {title: "Please submit your answer", article: {url:"https://docs.google.com/forms/d/e/1FAIpQLScZ_xynYA755MZiVmaf26Lnrjsmapyv7Xy1Av6pvB9yAJ-TJA/viewform",title:"title"}})             
+       //Alert.alert("Icon pressed", `the icon ${name} was pressed`);
 
                 }
               //Alert.alert("Icon pressed", `the icon ${name} was pressed`);
@@ -199,10 +200,12 @@ sendOnWhatsApp=() => {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: "#fff"
+      backgroundColor: "#fff",
+      
     }
   });
   
 DashBoard.navigationOptions = ({navigation}) => {
-    return {title: `My Coach`}
+    return {title: `Welcome to Root Class`,
+  }
 };

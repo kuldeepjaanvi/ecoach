@@ -124,6 +124,7 @@ export default function Articles(props) {
 
 Articles.navigationOptions = ({navigation}) => {
     return {
-        title: `${navigation.getParam('category')}`
+        title: `${navigation.getParam('category')}`,
+        
     }
 };

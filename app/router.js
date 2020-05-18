@@ -21,7 +21,8 @@ let titleColor = '#363434';
 let iconColor = '#808689';
 
 //Nav Header Styles
-let headerStyle = {backgroundColor: '#fff'};
+let headerStyle = {backgroundColor: '#88C727',elevation: 0,
+shadowOpacity: 0};
 let headerTitleStyle = {fontWeight: 'bold', fontSize: 17, fontFamily: font, color: titleColor};
 
 //Nav Buttons
@@ -43,7 +44,9 @@ const DashboardStack = createStackNavigator(
     {
         initialRouteName: 'DashBoard',
         defaultNavigationOptions: ({navigation}) => ({
-            headerStyle, headerTitleStyle,
+            headerStyle,
+            headerTintColor: 'blue',
+            headerTitleStyle
             //headerRight: (<SearchBtn onPress={() => navigation.navigate('Search')}/>)
         })
     }
