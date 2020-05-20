@@ -1,4 +1,4 @@
-package com.enablingpeople.ecoach;
+package com.focusclass;
 
 import android.os.Bundle;
 

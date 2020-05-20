@@ -35,12 +35,12 @@ android_library(
 
 android_build_config(
     name = "build_config",
-    package = "com.enablingpeople.ecoach",
+    package = "com.focusclass",
 )
 
 android_resource(
     name = "res",
-    package = "com.enablingpeople.ecoach",
+    package = "com.focusclass",
     res = "src/main/res",
 )
 

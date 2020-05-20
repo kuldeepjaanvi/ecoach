@@ -10,7 +10,7 @@ import Article from "../../utils";
 import Panel from '../../components/Panel'
 import PanelItem from '../../components/PanelItem'
 import { FloatingAction } from "react-native-floating-action";
-
+import { StatusBar } from 'react-native';
 export default function DashBoard(props) {
     const dispatch = useDispatch();
     const {navigate} = props.navigation;
@@ -113,6 +113,7 @@ export default function DashBoard(props) {
     return (
         <SafeAreaView style={styles.container}>
         <View style={styles.container}>
+        <StatusBar backgroundColor='#246600' barStyle="light-content" />
         <ScrollView style={{backgroundColor: "#fff"}}>
             {/* <Panel title={"Business"}
                    data={business.articles.slice(0, 10)}
