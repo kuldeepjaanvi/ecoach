@@ -185,7 +185,7 @@ export default function DashBoard(props) {
 
 sendOnWhatsApp=() => {
     let msg = "";
-    let mobile = 9886787008;
+    let mobile = 7047528148;
     if(mobile){
         let url = 'whatsapp://send?text=' + msg + '&phone=91' + mobile;
         Linking.openURL(url).then((data) => {
